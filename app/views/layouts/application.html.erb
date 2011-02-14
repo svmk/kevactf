@@ -1,380 +1,53 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
   <head>
-    <title>Kevactf</title>
-    <%= csrf_meta_tag %>
-    <%= javascript_include_tag :defaults %>
-    <style type="text/css">
-      form label {font-size: 13px;color:gray;}
-      a {
-        text-decoration: none;
-        color: #D6D6D6;
-      }
-      .head {
-        width:100%;
-        border: 1px solid gray;
-        height: 150px
-      }
-      .title_text {
-        font-family: 'Comic Sans MS';
-      }
-      #main_title {
-        font-size: 100px;
-      }
-      #sub_title {
-        font-size: 55px;
-      }
-      .head #head_left {
-        float:left
-      }
-      .head #head_right {
-        float:right;
-        margin-right: 13px;
-        margin-top: 10px;
-      }
-      .head2 {
-        margin-top: 1px;
-        width: 100%;
-      }
-      .menu_item {
-        border: 1px solid gray;
-        float:right;
-        padding-right: 4px;
-        padding-left: 4px;
-        margin-right: 4px;
-        margin-top:1px;
-      }
-      .content{
-        position: relative;
-        width: 100%;
-      }
-      .content:after
-      {
-        content: '';
-        display: block;
-        clear: both;
-      }
-      .content_left
-      {
-        position: relative;
-        right: 50%;
-        float: right;
-      }
-      .content_right
-      {
-        position: relative;
-        margin: 15px 15px;
-        padding: 10px 10px;
-        z-index: 1;
-        right: -220%;
-
-      }
-      .footer{
-        text-align: center;
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        padding-bottom: 30px;
-      }
-      #comment_content{
-        width: 96%;
-        height: 150px;
-      }
-      #comment_title{
-        width: 96%;
-      }
-      #comment_submit_button
-      {
-        margin-top: 6px
-      }
-      .hr1{
-        color:white;
-        background-color: #FCFCFC;
-      }
-      .hr2{
-        color:white;
-        background-color: gray;
-      }
-      .news_title{
-        margin-left: 3%
-      }
-      .news_content
-      {
-        padding-left: 5%
-      }
-      .news_item_new_border
-      {
-        border: 1px solid white;
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 50px;
-        padding-top: 13px;
-        padding-bottom: 20px;
-      }
-      .news_item_new_div
-      {
-        width: 90%;
-        margin-left: auto;
-        margin-right:auto;
-      }
-      .news_item_new_border .news_item_new_div #title
-      {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-      }
-      .news_item_new_border .news_item_new_div #content
-      {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        height: 170px;
-        width: 100%;
-      }
-      .news_item_new_border .news_item_new_div label
-      {
-
-      } 
-      .comment_border
-      {
-        border: 1px solid gray;
-        margin-left: 4%;
-        margin-right: 4%;
-        padding-left: 1%;
-      }
-      h3
-      {
-        color: white;
-        font-size: 26px;
-      }
-      .quests_table
-      {
-        margin-top: 1%;
-        margin-bottom: 1%;
-        margin-left: auto;
-        margin-right:auto;
-        text-align: center;
-        width: 97%;
-      }
-      .quests_head
-      {
-        font-size: 35px;
-      }
-      .quests_border
-      {
-        margin-top: 60px;
-        border: 1px solid gray;
-        margin-left: auto;
-        margin-right:auto;
-        width: 80%;
-      }
-      .quest_item
-      {
-        font-size: 24px;
-      }
-      .quest_item_disabled
-      {
-        font-size: 24px;
-        color: gray;
-      }
-      .quest_answer{
-        margin-top: 90px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align:center;
-        font-size: 25px;
-      }
-      .quest_border{
-        border: 1px solid white;
-        width: 40%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 50px;
-        text-align: center;
-        padding-bottom: 20px;
-      }
-      .score_head_item{
-        font-size: 125%;
-      }
-      .scoreboard_table
-      {
-        margin-left: auto;
-        margin-right: auto;
-        width: 95%;
-      }
-      .scoreboard_table td {
-        border: gray dotted 1px;
-      }
-      body{
-        background-color: black;
-        color: #D6D6D6;
-      }
-      .main_title{
-        text-align: center;
-        padding-top: 30px
-      }
-      .quests_table table
-      {
-        margin-left:auto;
-        margin-right: auto;
-        padding-top: 5px;
-      }
-      .quest_border table
-      {
-        margin-left:auto;
-        margin-right: auto;
-      }
-      .user_info
-      {
-        width: 80%;
-        margin-left:auto;
-        margin-right: auto;
-      }
-      .user_border{
-        border: 1px solid white;
-        width: 85%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 50px;
-        text-align: center;
-        padding-bottom: 20px;
-      }
-      .user_border table
-      {
-        width: 95%;
-      }
-      .hidden
-      {
-        display: none;
-      }
-      .main_level3
-      {
-        display: block;
-        text-align: center;
-        width: auto;
-        font-size: 40px;
-      }
-      .main_level2
-      {
-        display: block;
-        text-align: center;
-        width: auto;
-        font-size: 35px;
-      }
-      .main_level1
-      {
-        display: block;
-        text-align: center;
-        width: auto;
-        font-size: 30px;
-      }
-      .main_label3
-      {
-        text-align: center;
-        display:block;
-        color:gray;
-        font-size: 20px;
-      }
-      .main_label2
-      {
-        text-align: center;
-        display:block;
-        color:gray;
-        font-size: 18px;
-      }
-      .main_label1
-      {
-        text-align: center;
-        display:block;
-        color:gray;
-        font-size: 16px;
-      }
-      .main_page_content
-      {
-        text-align: center;
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .register_border
-      {
-        margin-top: 100px;
-      }
-      .register_border table
-      {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      #main_page_content
-      {
-        width: 95%;
-        height: 150px;
-      }
-      .auth_page
-      {
-        margin-top: 200px;
-      }
-      .auth_page table
-      {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .auth_failed_border
-      {
-        border: 1px solid gray;
-        padding: 30px;
-        margin-top: 150px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 40%;
-        text-align: center;
-      }
-      .new_news_item
-      {
-        display:block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 10%;
-      }
-    </style>
+    <title><%= I18n.t 'main_page.title' %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/stylesheets/st.css?1297603413" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/common.css?1297603413" media="screen" rel="stylesheet" type="text/css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/common.css"> -->
   </head>
   <body>
-    <div class="head">
-      <div id="head_left"><a class="title_text" id="main_title">KEVA</a><a class="title_text" id="sub_title">CTF</a></div>
-      <div id="head_right">
-        <% if @email!= '' then %>
-          <a>email: <a href="mailto:<%= @email %>"><%= @email %></a></a>
-        <% end %>
+    <div id="all">
+      <div id="hd">
+        <div id="navbar">
+          <ul>
+            <li><%= link_to t('main_page.main_page'), root_path, :class=>'menu_item'%></li>
+            <li><%= link_to t('main_page.news'), news_path, :class=>'menu_item'%></li>
+            <% if @game_enabled and @game_begin_time > DateTime.now or @admin then %>
+              <li><%= link_to t('main_page.scoreboard'), scoreboard_path, :class=>'menu_item'%></li>
+              <li><%= link_to t('main_page.quests'), quests_path, :class=>'menu_item'%></li>
+            <% end %>
+            <% if @register_enabled and @register_end_time > DateTime.now  or @admin then %>
+              <li><%= link_to t('main_page.register'), register_path, :class=>'menu_item'%></li>
+            <% end %>
+            <% if @admin then %>
+              <li><%= link_to t('main_page.admin'), admin_path, :class=>'menu_item' %></li
+              <li><%= link_to t('main_page.users'), users_path, :class=>'menu_item' %></li>
+            <% end %>
+            <li><%= if not @logged_in then
+                link_to t('main_page.login'), auth_path, :class=>'menu_item'
+              else
+                link_to t('main_page.logout'), auth_logout_path, :class=>'menu_item'
+              end
+            %></li>
+          </ul>
+        </div>
+        <div id="orangeline">
+          <% if not session[:admin] then %>
+            <a href="#">
+              <img id="logo" src="/images/logo.png" alt="TUSUR Challenge Competition"/>
+            </a>
+          <% end  %>
+        </div>
+      </div>
 
-        <% if @irc != '' then %>
-          <p><a>irc: <a><%= @irc %></a></a></p>
-        <% end %>
+      <div id="ct"><%= yield %></div>
+      <div id="ft">
+        <div class="l"><% if @irc != '' then %><a>irc: <a><%= @irc %></a></a><% end %><% if @email!= '' then %> <a>email: <a href="mailto:<%= @email %>"><%= @email %></a></a><% end %></div>
+        <div class="c">development &amp; design by <a href="http://keva.su">KEVA</a> Team</div>
       </div>
     </div>
-    <div class="head2">
-      <%= if not @logged_in then
-        link_to "Sign In", auth_path, :class=>'menu_item'
-      else
-        link_to "Logout", auth_logout_path, :class=>'menu_item'
-      end
-    %>
-      <% if @admin then %>
-        <%= link_to "Admin Page", admin_path, :class=>'menu_item' %>
-        <%= link_to "Users", users_path, :class=>'menu_item' %>
-      <% end %>
-      <% if @register_enabled and @register_end_time > DateTime.now  or @admin then %>
-        <%= link_to "Register", register_path, :class=>'menu_item'%>
-      <% end %>
-      <% if @game_enabled and @game_begin_time > DateTime.now or @admin then %>
-        <%= link_to "ScoreBoard", scoreboard_path, :class=>'menu_item'%>
-        <%= link_to "Quests", quests_path, :class=>'menu_item'%>
-      <% end %>
-      <%= link_to "News", news_path, :class=>'menu_item'%>
-      <%= link_to "MainPage", root_path, :class=>'menu_item'%>
-    </div> 
-    <%= yield %>
   </body>
 </html>
