@@ -24,12 +24,12 @@ Kevactf::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.yandex.ru',
+  :address        => '',
   :port           => 25,
-  :domain         => 'yandex.ru',
+  :domain         => '',
   :authentication => :plain,
-  :user_name      => 'svmk-tmsk',
-  :password       => 'keyyfzcjyfnf'
+  :user_name      => '',
+  :password       => ''
 }
 end
 
