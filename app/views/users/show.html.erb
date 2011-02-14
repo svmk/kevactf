@@ -1,0 +1,11 @@
+<div class="quest_border">
+  <h1>Dossier</h1>
+  <table class="user_info">
+    <tbody>
+      <tr><td>Real Name</td><td><%= @user.realname %></td></tr>
+      <tr><td>Nickname</td><td><%= @user.nickname %></td></tr>
+      <tr><td>University</td><td><%= @user.university %></td></tr>
+      <tr><td>Status</td><td><%= @user.admin ? "Administrator" : "User" %></td></tr>
+    </tbody>
+  </table>
+</div>

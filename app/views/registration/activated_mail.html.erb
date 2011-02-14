@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Welcome to KEVA CTF, <%= @user.realname %></h1>
+    <p>
+      You have successfully activated your account,
+      your nickname is: <%= @user.nickname %>.<br/>
+    </p>
+    <p>
+      Your password will be sent later.
+    </p>
+    <p>
+      We remind you that the game will begin at <%= KevaConfig.where(:key=>'game_begin').first.value %>.
+      The game will end in <%= KevaConfig.where(:key=>'game_end').first.value %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

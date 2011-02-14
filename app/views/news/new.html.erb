@@ -1,0 +1,23 @@
+<h1 class="main_title">New News</h1>
+<div class="news_item_new_border">
+  <div class="news_item_new_div">
+    <% if @news_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@news_item.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @news_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= form_tag :action=>'create' do  %>
+      <%= label_tag('title','Title') %><br/>
+      <%= text_field_tag('title',@news_item.title) %><br/>
+      <%= label_tag('content','Message') %><br/>
+      <%= text_area_tag 'content',@news_item.content %><br/>
+      <%= submit_tag 'Send',:id=>"news_item_submit_button" %>
+    <% end %>
+  </div>
+</div>

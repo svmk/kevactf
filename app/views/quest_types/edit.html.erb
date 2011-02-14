@@ -1,0 +1,29 @@
+<div class="quest_border">
+<h1>Edit this type of quest</h1>
+
+<%= form_tag :action=>'update' do  %>
+  <% if @quest_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@quest_type.errors.count, "error") %> prohibited this quest from being saved:</h2>
+
+      <ul>
+      <% @quest_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag :title %><br />
+    <%= text_area_tag :title,@quest_type.title %>
+  </div>
+
+  <div class="actions">
+    <br/>
+    <%= submit_tag %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', :controller=>'quests' %>
+</div>

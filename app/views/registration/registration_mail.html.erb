@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Welcome to KEVA CTF, <%= @user.realname %></h1>
+    <p>
+      You have successfully signed up to <%= @hostname %>,
+      your nickname is: <%= @user.nickname %>.<br/>
+    </p>
+    <p>
+      You should confirm their participation in the game by following this link.<br/>
+      <a href="<%= raw url_for :controller=>'users',:action=>'activate',:key=>@user.md5hash,:only_path=>false,:host=>@hostname %>"><%= url_for :controller=>'users',:action=>'activate',:key=>@user.md5hash,:only_path=>false,:host=>@hostname %></a>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

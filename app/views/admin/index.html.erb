@@ -1,0 +1,80 @@
+<div class="quest_border">
+  <h1>Admin page</h1>
+  <%= form_tag :action=>'update' do  %>
+    <div class="field">
+      <%= label_tag :irc %><br />
+      <%= text_area_tag :irc, @irc %>
+    </div>
+    <div class="field">
+      <%= label_tag :email %><br />
+      <%= text_area_tag :email, @email %>
+    </div>
+    <div class="field">
+      <%= label_tag :news_comments %><br />
+      <%= select_tag :news_comments, raw ("<option" +
+          ((@news_comments == "Disabled") ? ' selected="selected" ' : "") +
+          ">Disabled</option>" +"<option" +
+          ((@news_comments == "Enabled") ? ' selected="selected" ' : "") +
+          ">Enabled</option>") %>
+    </div>
+    <div class="field">
+      <%= label_tag :register_end %><br />
+      <%= select_time @register_end,:prefix=>'register_end' %>
+      <%= select_day @register_end.day,:prefix=>'register_end' %>
+      <%= select_month(@register_end.month,
+        :use_month_names => %w(January February March April May June July August September October November December),
+        :prefix=>'register_end') %>
+      <%= select_year @register_end.year,:prefix=>'register_end' %><br />
+    </div>
+    <div class="field">
+      <%= label_tag :register_enabled %><br />
+      <%= select_tag :register_enabled, raw ("<option" +
+          ((@register_enabled == "Disabled") ? ' selected="selected" ' : "") +
+          ">Disabled</option>" + "<option" +
+          ((@register_enabled == "Enabled") ? ' selected="selected" ' : "") +
+          ">Enabled</option>") %>
+    </div>
+    <div class="field">
+      <%= label_tag :game_begin %><br />
+      <%= select_time @game_begin,:prefix=>'game_begin' %>
+      <%= select_day @game_begin.day,:prefix=>'game_begin' %>
+      <%= select_month(@game_begin.month,
+        :use_month_names => %w(January February March April May June July August September October November December),
+        :prefix=>'game_begin') %>
+      <%= select_year @game_begin.year,:prefix=>'game_begin' %><br />
+    </div>
+    <div class="field">
+      <%= label_tag :game_end %><br />
+      <%= select_time @game_end,:prefix=>'game_end' %>
+      <%= select_day @game_end.day,:prefix=>'game_end' %>
+      <%= select_month(@game_end.month,
+        :use_month_names => %w(January February March April May June July August September October November December),
+        :prefix=>'game_end') %>
+      <%= select_year @game_end.year,:prefix=>'game_end' %><br />
+    </div>
+    <div class="field">
+      <%= label_tag :game_enabled %><br />
+      <%= select_tag :game_enabled, raw ("<option" +
+          ((@game_enabled == "Disabled") ? ' selected="selected" ' : "") +
+          ">Disabled</option>" + "<option" +
+          ((@game_enabled == "Enabled") ? ' selected="selected" ' : "") +
+          ">Enabled</option>") %>
+    </div>
+    <div class="field">
+      <%= label_tag :main_page_content %><br />
+      <%= text_area_tag :main_page_content, @main_page_content %>
+    </div>
+    <div class="field">
+      <%= label_tag :user_delay %><br />
+      <%= select_time @user_delay,:prefix=>'user_delay',:include_seconds => true %><br/>
+    </div>
+    <div class="actions">
+      <br/>
+      <%= submit_tag %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back', :controller=>'quests' %>
+</div>
+<br/>
+<br/>

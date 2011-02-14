@@ -1,0 +1,66 @@
+<%= raw (session[:admin] and (@quests.length <= 0 or 
+      @quest_types.length <= 0)) ? ( "<table><tbody><tr><td>" +
+    ( @quest_types.length <= 0 ? button_to('New quest type',
+      {:controller=>'quest_types',:action=>'new'},:method=>'get') : "") +
+    "</td><td>" + ( @quests.length <= 0 ? button_to('New quest',{:action=>'new'},:method=>'get') : "") +
+    "</td></tr></tbody></table>") : "" %>
+<div class="quests_border">
+  <table class="quests_table" border="1" frame="void" rules="none" cellpadding="14">
+    <thead>
+      <tr>
+        <%  @quest_types.each do | quest_type | %>
+          <td><a class="quests_head"><%= quest_type.title  %></a><%=
+            raw session[:admin] ? "<br/><table><tbody><tr><td>" + (button_to 'New',
+              {:controller=>'quest_types',:action=>'new'},:method=>'get') +
+              "</td><td>" + (button_to 'Edit',{:controller=>'quest_types',:action=>'edit',:id=>quest_type.id},
+              :method=>'get') + "</td><td>" + (button_to 'Delete',{:controller=>'quest_types',
+                :action=>'destroy',:id=>quest_type.id},:method=>'delete') +
+              "</td></tr></tbody></table>" : "" %></td>
+        <%  end %>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+      if @quests.length > 0 then
+        prev_price = @quests.first.price
+        i = 0
+        while i < @quests.length do
+        %><tr><%
+            for j in (0..@quest_types.length-1)
+              quest_type = @quest_types[j]
+              if i >= @quests.length
+                break
+              end
+              quest = @quests[i]
+              if quest.price != prev_price then
+                prev_price = quest.price
+                break
+              end
+              quest_class='quest_item'
+              if not quest.show then
+                quest_class = 'quest_item_disabled'
+              end
+              if quest.quest_type_id != quest_type.id then
+              %><td></td><%
+              else
+                admin_str = ''
+                if session[:admin] then
+                  admin_str = '<table ><tbody><tr><td>' + button_to('New',{:action=>'new'},:method=>'get') + '</td>' +
+                    '<td>' + button_to('Edit',{:action=>'edit',:id=>quest.id},:method=>'get') + '</td>' +
+                    '<td>' + button_to('Delete',{:action=>'destroy',:id=>quest.id},:method=>'delete',:confirm=>'Are you sure?') + '</td></tr></tbody></table>'
+                end
+              %><td><%= link_to quest.price.to_s,{:action=>'show',:id=>quest.id},:class=>quest_class %><%= raw admin_str %></td><%
+                if i >= @quests.length then
+                  break
+                end
+                i = i + 1
+              end
+
+            end
+          %></tr><%
+        end
+      end
+    %>
+    </tbody>
+  </table>
+</div>

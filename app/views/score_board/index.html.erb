@@ -1,0 +1,13 @@
+<div class="quest_border">
+  <h1>ScoreBoard</h1>
+  <table class="scoreboard_table"  border="1" frame="void" rules="none" cellpadding="14">
+    <thead><tr class="score_head_item"><td>Name</td><td>Score</td><td>Finished</td></tr></thead>
+    <tbody>
+      <% if @finished_count > 0 then %>
+        <% @users.each do | user | %>
+          <tr><td><%= user.realname %> (<%= link_to user.nickname, user %>)</td><td><%= user.price %></td><td><%= ((user.quest.count * 100) / @finished_count).to_s + ' %' %></td></tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
