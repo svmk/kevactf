@@ -1,0 +1,21 @@
+## YAML Template.
+---
+ru:
+  main_page:
+    title: T4K - TUSUR Challenge Competition - TUSUR Challenge
+    login: Вход
+    logout: Выйти
+    admin: Админка
+    users: Пользователи
+    register: Регистрация
+    quests: Задания
+    scoreboard: ScoreBoard
+    news: Новости
+    main_page: Главная страница
+  news:
+    title: Новости
+    add_comment: Добавить комментарий
+    comments: комментариев
+
+
+  
