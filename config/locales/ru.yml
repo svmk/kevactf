@@ -42,5 +42,10 @@ ru:
           attributes:
             content:
               blank: Заполните поле "содержание"
+  scoreboard:
+    title: ScoreBoard
+    name: Имя
+    score: Очки
+    finished: Закончено
 
   
