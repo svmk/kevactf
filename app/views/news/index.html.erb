@@ -1,16 +1,24 @@
 <h1><%= t('news.title') %></h1>
-<% if @news.count <= 0 and session[:admin] then # url_for() %>
-<%= link_to 'New news',{:controller=>'news',:action=>'new'},{:class=>'new_news_item'} %>
-<% end %>
-<% @news.each do |news_item| %>
-  <div>
-    <h2 style="color:black;"><%= link_to news_item.title,:action=>'show',:id=>news_item.id %></h2>
-    <div style="padding-left: 5%"><p><%= raw  news_item.content %></p>
-      <p><%= link_to (news_item.user.realname or news_item.user.nickname), :controller=>'users',:action=>'show',:id=>news_item.user.id  %> (<%= news_item.created_at.to_s %> )</p>
-      <% kevaconf = KevaConfig.where(:key => 'news_comments').first
-      if kevaconf and kevaconf.value then %>
-        <p>[ <%= link_to t('news.add_comment'),:action=>'new_comment',:id => news_item.id %> ] [ <%= link_to (news_item.comment.count.to_s + " " + t('news.comments')),:action=>'comments', :id => news_item.id %> ]</p>
-      <% end %>
+<div class="vv">
+  <% if @news.count <= 0 and session[:admin] then # url_for() %>
+    <br/>
+    <%= link_to 'New news',{:controller=>'news',:action=>'new'},{:class=>'new_news_item'} %>
+    <br/>
+  <% end %>
+  <% kevaconf = KevaConfig.where(:key => 'news_comments').first %>
+  <% @news.each do |news_item| %>
+    <br/>
+    <h2 style="color:black;text-align: left; margin-left: 50px"><%= link_to news_item.title,:action=>'show',:id=>news_item.id %></h2>
+    <div class="news_align"><p><%= raw  news_item.content %></p>
+      <br/>
+      <div class="news_info">
+        <%= link_to (news_item.user.realname or news_item.user.nickname), (url_for :controller=>'users',:action=>'show',:id=>news_item.user.id ),{:class=>'username_link'} %>
+        <a class="news_item_time"><%= news_item.created_at.to_s %></a>
+        <% if kevaconf and kevaconf.value == "Enabled" then %>
+          <%= link_to (news_item.comment.count.to_s + " " + t('news.comments')),(url_for :action=>'comments', :id => news_item.id),{:class=>'news_item_time'} %>
+          <%= link_to t('news.add_comment'),url_for(:action=>'new_comment',:id => news_item.id),{:class=>'news_item_time'} %>
+        <% end %>
+      </div>
       <% if session[:admin] then %>
         <table>
           <tbody>
@@ -22,7 +30,6 @@
           </tbody>
         </table>
       <% end %>
-    </div>
+    <% end %>
   </div>
-<% end %>
-
+</div>

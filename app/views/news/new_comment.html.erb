@@ -1,27 +1,49 @@
-<h1>News</h1>
-<hr noshade width="95%" style="color:white;background-color: #FCFCFC;"></hr>
-<div>
-  <h2 style="margin-left: 3%"><%= link_to @news_item.title, news_path(@news_item) %></h2>
-  <div style="padding-left: 5%"><p><%= raw  @news_item.content %></p>
-   <p><%= link_to (@news_item.user.realname or @news_item.user.nickname), users_path(@news_item.user)  %> (<%= @news_item.created_at.to_s %> )</p>
-   <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<h1><%= t('news.title') %></h1>
+<div class="vv">
+  <% kevaconf = KevaConfig.where(:key => 'news_comments').first %>
+  <br/>
+  <h2 style="color:black;text-align: left; margin-left: 50px"><%= link_to @news_item.title,:action=>'show',:id=>@news_item.id %></h2>
+  <div class="news_align"><p><%= raw  @news_item.content %></p>
+    <br/>
+    <div class="news_info">
+      <%= link_to (@news_item.user.realname or @news_item.user.nickname), (url_for :controller=>'users',:action=>'show',:id=>@news_item.user.id ),{:class=>'username_link'} %>
+      <a class="news_item_time"><%= @news_item.created_at.to_s %></a>
+      <% if kevaconf and kevaconf.value == "Enabled" then %>
+        <%= link_to (@news_item.comment.count.to_s + " " + t('news.comments')),(url_for :action=>'comments', :id => @news_item.id),{:class=>'news_item_time'} %>
+        <%= link_to t('news.add_comment'),url_for(:action=>'new_comment',:id => @news_item.id),{:class=>'news_item_time'} %>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-   <%= form_tag((url_for :action => 'create_comment'),:method=>'post') do %>
-   <%= label_tag('comment_title','Title') %><br/>
-   <%= text_field_tag('comment_title',@comment.title) %><br/>
-   <%= label_tag('comment_content','Message') %><br/>
-   <%= text_area_tag 'comment_content',@comment.content%><br/>
-   <%= submit_tag 'Send',:id=>"comment_submit_button" %>
-   <% end %>
+    <% if session[:admin] then %>
+      <table>
+        <tbody>
+          <tr>
+            <td><%= button_to t('control.edit'),{:action=>'edit',:id=>@news_item.id},:method=>'get' %></td>
+            <td><%= button_to t('control.delete'),{:action=>'destroy',:id=>@news_item.id},:method=>'delete',:confirm=>'Are you sure?' %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+    <% if @comment.errors.any? %>
+      <div class="comment_con_border1">
+        <div class="comment_con_border2">
+          <div class="comment_con_border3">
+            <ul>
+              <% @comment.errors.full_messages.each do |msg| %>
+                <a class="error"><%= msg %></a><br/>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= form_tag((url_for :action => 'create_comment'),:method=>'post') do %>
+      <%= label_tag('comment_title',t('comment.title')) %><br/>
+      <%= text_field_tag('comment_title',@comment.title) %><br/>
+      <%= label_tag('comment_content',t('comment.message')) %><br/>
+      <%= text_area_tag 'comment_content',@comment.content%><br/>
+      <%= submit_tag t('comment.send'),:id=>"comment_submit_button" %>
+    <% end %>
   </div>
 </div>
+
 

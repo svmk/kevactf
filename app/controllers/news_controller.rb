@@ -1,7 +1,7 @@
 class NewsController < ApplicationController
   # GET /news
   def index
-    @news = NewsItem.all()
+    @news = NewsItem.order('updated_at DESC')
     respond_to do |format|
       format.html # index.html.erb
     end

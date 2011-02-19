@@ -1,11 +1,198 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
+<!-- HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" -->
 <html>
   <head>
     <title><%= I18n.t 'main_page.title' %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/stylesheets/st.css?1297603413" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/common.css?1297603413" media="screen" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      .vv
+      {
+        width: 100%;
+        padding-bottom: 30px;
+        padding-right: 30px;
+        border-radius: 10px;
+
+        background-color: #FFFBDE;
+      }
+      .new_news_item
+      {
+        margin-left: 30px;
+      }
+      .username_link
+      {
+        text-transform: lowercase;
+        color: black;
+      }
+      .comment_link
+      {
+        text-transform: lowercase;
+        color: black;
+        margin-left: 17px;
+      }
+      .news_info
+      {
+        width: auto;
+        display: inline;
+        padding-right: 17px;
+        padding-left: 17px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        background-color: #FFFEF5;
+        border: 1px solid #FFBD86;
+      }
+      .news_item_time
+      {
+        color: gray;
+        font-size: 85%;
+      }
+      .news_item_time:hover
+      {
+        color: #FC833B;
+        text-decoration: none;
+      }
+      .news_align
+      {
+        padding-left: 70px
+      }
+
+      .vv table
+      {
+        padding-top: 10px;
+      }
+      input
+      {
+        background-color: white;
+        border: 1px solid #FFBD86;
+        padding: 2px;
+      }
+      input:hover
+      {
+        background-color: white;
+        border: 1px solid #FF790A;
+        padding: 2px;
+      }
+      .comment_border
+      {
+        margin-top: 20px;
+      }
+      .comment_con_border1
+      {
+        margin-top: 10px;
+        margin-left: 30px;
+        border: 3px solid #FFBD86;
+        border-right: 0px;
+        border-top: 0px;
+        border-bottom: 0px;
+      }
+      .comment_con_border2
+      {
+        margin-left: 1px;
+        border: 2px solid #FFBD86;
+        border-right: 0px;
+        border-top: 0px;
+        border-bottom: 0px;
+      }
+      .comment_con_border3
+      {
+        margin-left: 1px;
+        border: 1px solid #FFBD86;
+        border-right: 0px;
+        border-top: 0px;
+        border-bottom: 0px;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-bottom: 10px;
+      }
+      .comment_con_border1:hover
+      {
+        margin-top: 10px;
+        margin-left: 30px;
+        border: 3px solid #FF790A;
+        border-right: 0px;
+        border-top: 0px;
+        border-bottom: 0px;
+      }
+      .comment_con_border2:hover
+      {
+        margin-left: 1px;
+        border: 2px solid #FF790A;
+        border-right: 0px;
+        border-top: 0px;
+        border-bottom: 0px;
+      }
+      .comment_con_border3:hover
+      {
+        margin-left: 1px;
+        border: 1px solid #FF790A;
+        border-right: 0px;
+        border-top: 0px;
+        border-bottom: 0px;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-bottom: 10px;
+      }
+      .lkn {display: inline;}
+      .lkn form
+      {
+        display: inline;
+      }
+      .lkn form div
+      {
+        display: inline;
+      }
+      .lkn form div input
+      {
+        display: inline;
+      }
+      textarea
+      {
+        background-color: white;
+        border: 1px solid #FFBD86;
+        padding: 2px;
+      }
+      textarea:hover
+      {
+        background-color: white;
+        border: 1px solid #FF790A;
+        padding: 2px;
+      }
+      #comment_submit_button
+      {
+        margin-top: 10px;
+      }
+      #comment_title
+      {
+        width: 400px;
+      }
+      #comment_content
+      {
+        width: 400px;
+        height: 250px;
+      }
+      label
+      {
+        color: #3A3A3A;
+        font-size: 90%;
+      }
+      .error
+      {
+        color: black;
+        text-decoration: none;
+        text-transform: none;
+      }
+      .error:hover
+      {
+        color: black;
+        text-decoration: none;
+        text-transform: none;
+      }
+    </style>
+
     <!-- <link rel="stylesheet" type="text/css" href="css/common.css"> -->
   </head>
   <body>

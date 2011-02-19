@@ -16,6 +16,21 @@ ru:
     title: Новости
     add_comment: Добавить комментарий
     comments: комментариев
+  control:
+    new: Добавить
+    edit: Изменить
+    delete: Удалить
+  comment:
+    title: Заголовок
+    message: Сообщение
+    send: Отправить
+  activerecord:
+    errors:
+      models:
+        comment:
+          attributes:
+            content:
+              blank: Заполните поле "сообщение"
 
 
   

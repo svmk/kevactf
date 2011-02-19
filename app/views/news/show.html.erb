@@ -1,39 +1,39 @@
-<h1 class="main_title">News</h1>
-<hr noshade width="95%" class="hr1"></hr>
-<div>
-  <h2 class="news_title"><%= link_to @news_item.title, news_path(@news_item) %></h2>
-  <div class="news_content"><p><%= raw  @news_item.content %></p>
-    <p><%= link_to (@news_item.user.realname or @news_item.user.nickname), users_path(@news_item.user)  %> (<%= @news_item.created_at.to_s %> )</p>
-    <% kevaconf = KevaConfig.where(:key => 'news_comments').first
-    if kevaconf and kevaconf.value then %>
-      <p>[ <%= link_to "Add comment",:action=>'new_comment',:id => @news_item.id %> ] [ <%= link_to (@news_item.comment.count.to_s + " comments"),:action=>'comments', :id => @news_item.id %> ]</p>
-    <% end %>
+<h1><%= t('news.title') %></h1>
+<div class="vv">
+  <% kevaconf = KevaConfig.where(:key => 'news_comments').first %>
+  <br/>
+  <h2 style="color:black;text-align: left; margin-left: 50px"><%= link_to @news_item.title,:action=>'show',:id=>@news_item.id %></h2>
+  <div class="news_align"><p><%= raw  @news_item.content %></p>
+    <br/>
+    <div class="news_info">
+      <%= link_to (@news_item.user.realname or @news_item.user.nickname), (url_for :controller=>'users',:action=>'show',:id=>@news_item.user.id ),{:class=>'username_link'} %>
+      <a class="news_item_time"><%= @news_item.created_at.to_s %></a>
+      <% if kevaconf and kevaconf.value == "Enabled" then %>
+        <%= link_to (@news_item.comment.count.to_s + " " + t('news.comments')),(url_for :action=>'comments', :id => @news_item.id),{:class=>'news_item_time'} %>
+        <%= link_to t('news.add_comment'),url_for(:action=>'new_comment',:id => @news_item.id),{:class=>'news_item_time'} %>
+      <% end %>
+    </div>
     <% if session[:admin] then %>
       <table>
         <tbody>
           <tr>
-            <td><%= button_to 'Edit',{:action=>'edit',:id=>@news_item.id},:method=>'get' %></td>
-            <td><%= button_to 'Delete',{:action=>'destroy',:id=>@news_item.id},:method=>'delete',:confirm=>'Are you sure?' %></td>
+            <td><%= button_to t('control.edit'),{:action=>'edit',:id=>@news_item.id},:method=>'get' %></td>
+            <td><%= button_to t('control.delete'),{:action=>'destroy',:id=>@news_item.id},:method=>'delete',:confirm=>'Are you sure?' %></td>
           </tr>
         </tbody>
       </table>
     <% end %>
+    <% @comments.each do |comment| %>
+      <div class="comment_border">
+        <a><a><%= comment.title %></a> <%= link_to (comment.user.realname or comment.user.nickname),(url_for :controller=>'users',:action=>'show',:id=>comment.user_id),{:class=>'comment_link'} %>
+          <a class="news_item_time"><%= comment.created_at.to_s %></a>
+          <% if session[:admin] then %>
+            <div class="lkn"><%= button_to t('control.delete'),:action=>'remove_comment',
+                :id=>comment.id,:news_id=>@news_item.id,:confirm=>'Are you sure?' %></div>
+          <% end %></a>
+        <div class="comment_con_border1"><div class="comment_con_border2"><div class="comment_con_border3"><%= comment.content %></div></div></div>
+      </div>
+      <br/>
+    <% end %>
   </div>
 </div>
-<hr noshade width="92%" class="hr2" size="1"></hr>
-<a name="comments"></a>
-<% @comments.each do |comment| %>
-  <div class="comment_border">
-    <h3><%= comment.title %></h3>
-    <p><%= comment.content %></p>
-    <br/>
-    <p><%= link_to (comment.user.realname or comment.user.nickname),
-        :controller=>'users',:action=>'show',
-        :id=>comment.user_id %> ( <%= comment.created_at.to_s %> )
-      <%= if session[:admin] then
-        button_to 'Delete',:action=>'remove_comment',
-          :id=>comment.id,:news_id=>@news_item.id,:confirm=>'Are you sure?'
-      end %></p>
-  </div>
-  <br/>
-<% end %>
