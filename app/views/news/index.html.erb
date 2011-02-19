@@ -1,16 +1,15 @@
-<h1 class="main_title">News</h1>
+<h1><%= t('news.title') %></h1>
 <% if @news.count <= 0 and session[:admin] then # url_for() %>
 <%= link_to 'New news',{:controller=>'news',:action=>'new'},{:class=>'new_news_item'} %>
 <% end %>
 <% @news.each do |news_item| %>
-  <hr noshade width="95%" style="color:white;background-color: #FCFCFC;"></hr>
   <div>
-    <h2 style="margin-left: 3%"><%= link_to news_item.title,:action=>'show',:id=>news_item.id %></h2>
+    <h2 style="color:black;"><%= link_to news_item.title,:action=>'show',:id=>news_item.id %></h2>
     <div style="padding-left: 5%"><p><%= raw  news_item.content %></p>
       <p><%= link_to (news_item.user.realname or news_item.user.nickname), :controller=>'users',:action=>'show',:id=>news_item.user.id  %> (<%= news_item.created_at.to_s %> )</p>
       <% kevaconf = KevaConfig.where(:key => 'news_comments').first
       if kevaconf and kevaconf.value then %>
-        <p>[ <%= link_to "Add comment",:action=>'new_comment',:id => news_item.id %> ] [ <%= link_to (news_item.comment.count.to_s + " comments"),:action=>'comments', :id => news_item.id %> ]</p>
+        <p>[ <%= link_to t('news.add_comment'),:action=>'new_comment',:id => news_item.id %> ] [ <%= link_to (news_item.comment.count.to_s + " " + t('news.comments')),:action=>'comments', :id => news_item.id %> ]</p>
       <% end %>
       <% if session[:admin] then %>
         <table>

@@ -1,0 +1,87 @@
+* {margin: 0; padding: 0;} 
+body {
+  color: white;
+  background: black;
+  font-family: "Times New Roman", serif;
+  font-size: 16px;
+  padding: 0 32px;
+}
+
+a {text-decoration: none; color: #fc7200;}
+a:hover {text-decoration: underline;}
+a img {border: none;}
+
+#all {
+  background: white;
+  color: black;
+  min-width: 800px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+#hd {height: 128px; width: 100%;}
+
+#orangeline {
+  background: #ff790a;
+  height: 16px;
+  width: 100%;
+  z-index: -1;
+}
+
+#navbar {
+  font-family: Verdana, sans-serif;
+  float: left;
+  font-size: 0.9em;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-left: 64px;
+  margin-top: 16px;
+}
+
+#navbar ul {list-style-type: none;}
+
+#navbar li {float: left; margin-right: 24px;}
+#navbar li a {color: black;}
+#navbar li a:hover {text-decoration: overline; }
+
+#logo {float:right; margin-right: 32px;}
+
+#ct {margin: 0 64px;}
+
+#ct h1 {text-align:right; margin: 1em 0; font-weight: normal; font-size: 2em;}
+#ct h2 {margin-bottom: 1em; font-size: 1.6em; font-weight: normal; text-align: center;}
+#ct p {margin-bottom: 0.7em;}
+
+#ft {height: 216px; width: 100%; background: url("../images/mascot.png") no-repeat 32px bottom;}
+
+#ft .c {
+  float: right;
+  top: 196px;
+  position: relative;
+  font-family: Verdana, sans-serif;
+  font-size: 0.7em;
+  margin-right: 32px;
+}
+
+#ft .l {
+  float:left;
+  font-family: Verdana, sans-serif;
+  margin-left: 150px;
+  top: 196px;
+  position:relative;
+  font-size: 0.7em;
+  color:gray;
+}
+
+#errorExplanation {
+  background: #f9d1d1;
+  border: 2px dashed #ba0000;
+  font-size: 0.9em;
+  padding: 8px 32px;
+  margin-bottom: 16px;
+}
+
+#errorExplanation h2 {font-size: 1.2em; text-align: left; font-weight: bold;}
+#errorExplanation ul {margin-left: 16px; list-style-type: square;}
+
+.form_row {padding-bottom: 0.5em;}
