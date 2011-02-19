@@ -13,9 +13,14 @@ ru:
     news: Новости
     main_page: Главная страница
   news:
+    title_new: Заголовок
     title: Новости
     add_comment: Добавить комментарий
     comments: комментариев
+    new: Добавить новость
+    edit: Редактировать нововсть
+    content: Содержание
+    send: Отпарвить
   control:
     new: Добавить
     edit: Изменить
@@ -31,6 +36,11 @@ ru:
           attributes:
             content:
               blank: Заполните поле "сообщение"
-
+            title:
+              too_long: Сильно длинный заголовок.
+        news_item:
+          attributes:
+            content:
+              blank: Заполните поле "содержание"
 
   

@@ -23,9 +23,9 @@
         <table>
           <tbody>
             <tr>
-              <td><%= button_to 'New',{:action=>'new'},:method=>'get'%></td>
-              <td><%= button_to 'Edit',{:action=>'edit',:id=>news_item.id},:method=>'get' %></td>
-              <td><%= button_to 'Delete',{:action=>'destroy',:id=>news_item.id},:method=>'delete',:confirm=>'Are you sure?' %></td>
+              <td><%= button_to t('control.new'),{:action=>'new'},:method=>'get'%></td>
+              <td><%= button_to t('control.edit'),{:action=>'edit',:id=>news_item.id},:method=>'get' %></td>
+              <td><%= button_to t('control.delete'),{:action=>'destroy',:id=>news_item.id},:method=>'delete',:confirm=>'Are you sure?' %></td>
             </tr>
           </tbody>
         </table>

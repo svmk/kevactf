@@ -1,23 +1,28 @@
-<h1 class="main_title">New News</h1>
-<div class="news_item_new_border">
-  <div class="news_item_new_div">
-    <% if @news_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@news_item.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="vv">
+  <h1 class="main_title"><%= t('news.new') %></h1>
 
-      <ul>
-      <% @news_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <% if @news_item.errors.any? %>
+    <div class="comment_con_border1">
+      <div class="comment_con_border2">
+        <div class="comment_con_border3">
+          <ul>
+            <% @news_item.errors.full_messages.each do |msg| %>
+              <a class="error"><%= msg %></a><br/>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
   <% end %>
-    <%= form_tag :action=>'create' do  %>
-      <%= label_tag('title','Title') %><br/>
-      <%= text_field_tag('title',@news_item.title) %><br/>
-      <%= label_tag('content','Message') %><br/>
-      <%= text_area_tag 'content',@news_item.content %><br/>
-      <%= submit_tag 'Send',:id=>"news_item_submit_button" %>
-    <% end %>
+  <div class="formspace">
+    <div class="formcenter">
+      <%= form_tag :action=>'create' do  %>
+        <%= label_tag('title',t('news.title_new')) %><br/>
+        <%= text_field_tag('title',@news_item.title) %><br/>
+        <%= label_tag('content',t('news.content')) %><br/>
+        <%= text_area_tag 'content',@news_item.content %><br/>
+        <%= submit_tag t('news.send'),:id=>"news_item_submit_button" %>
+      <% end %>
+    </div>
   </div>
 </div>
