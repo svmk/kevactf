@@ -1,7 +1,7 @@
 <h1><%= t('admin.title') %></h1>
 <div class="vv">
   <div class="formspace">
-    <div class="formcenter">
+    <div class="formcenter" id="admin_page">
   <%= form_tag :action=>'update' do  %>
       <%= label_tag :irc,t('admin.irc') %><br />
       <%= text_area_tag :irc, @irc %><br />
