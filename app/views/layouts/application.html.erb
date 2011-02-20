@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" -->
 <html>
   <head>
     <title><%= I18n.t 'main_page.title' %></title>
@@ -199,6 +197,21 @@
         margin-left: auto;
 
       }
+      .formcenter_auth
+      {
+        width: 200px;
+        margin-right: auto;
+        margin-left: auto;
+
+      }
+      #login
+      {
+        width: 100%;
+      }
+      #password
+      {
+        width: 100%;
+      }
       .formcenter #title
       {
         width: 100%;
@@ -219,7 +232,131 @@
         margin-left: 50px;
         margin-right: 50px;
         border-color: #FFBD86;
-}
+      }
+      td form
+      {
+        display: inline;
+      }
+      td form div
+      {
+        display: inline;
+      }
+      td form div input
+      {
+        display: inline;
+      }
+      table.quests_table thead tr td
+      {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        vertical-align: middle;
+      }
+      table.quests_table tbody tr td
+      {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        vertical-align: middle;
+      }
+      .quest_item
+      {
+        color: black;
+        text-decoration: none;
+      }
+      .quest_item_disabled
+      {
+        color: gray;
+        text-decoration: none;
+      }
+      .quest_type_item
+      {
+        color: black;
+        text-decoration: none;
+      }
+
+      .quest_admin_field
+      {
+        padding-left: 20px;
+      }
+      .quest_admin_field form
+      {
+        display: inline;
+      }
+      .quest_admin_field form div
+      {
+        display: inline;
+      }
+      .quest_admin_field form div input
+      {
+        display: inline;
+      }
+      .quests_table{
+        text-align: center;
+        width: 760px;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+      .text-center{
+        text-align: center;
+      }
+      .price_value
+      {
+        padding-top: 25px;
+        font-size: 40px;
+      }
+      #quest_content
+      {
+        padding-bottom: 20px;
+      }
+      #quest_footer
+      {
+        margin-top: 20px;
+        text-align:center;
+      }
+      #quest_footer form 
+      {
+        display: inline;
+      }
+      #quest_footer form div
+      {
+        display: inline;
+      }
+      #quest_footer form div input
+      {
+        display: inline;
+      }
+      .message
+      {
+        text-align: center;
+        padding-top: 30px;
+      }
+      .message_a
+      {
+        color:black;
+        text-decoration: none;
+        font-size: 30px;
+      }
+      .register_form
+      {
+        margin-left: 320px;
+      }
+      #user_list
+      {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      #user_list table
+      {
+        width: 100%;
+      }
+      .user_info
+      {
+        margin-left:auto;
+        margin-right:auto;
+        width: 300px;
+      }
+      #irc { width: 100%;}
+      #email { width: 100%;}
+      #main_page_content { width: 100%;height: 300px}
     </style>
 
     <!-- <link rel="stylesheet" type="text/css" href="css/common.css"> -->
@@ -239,7 +376,7 @@
               <li><%= link_to t('main_page.register'), register_path, :class=>'menu_item'%></li>
             <% end %>
             <% if @admin then %>
-              <li><%= link_to t('main_page.admin'), admin_path, :class=>'menu_item' %></li
+              <li><%= link_to t('main_page.admin'), admin_path, :class=>'menu_item' %></li>
               <li><%= link_to t('main_page.users'), users_path, :class=>'menu_item' %></li>
             <% end %>
             <li><%= if not @logged_in then

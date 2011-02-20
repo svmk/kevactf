@@ -1,29 +1,32 @@
-<div class="quest_border">
-<h1>A new type of quest</h1>
-
-<%= form_tag :action=>'create' do  %>
+<div class="vv">
+  <h1 class="main_title"><%= t('quest_type.new') %></h1>
   <% if @quest_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@quest_type.errors.count, "error") %> prohibited this quest from being saved:</h2>
-
-      <ul>
-      <% @quest_type.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="comment_con_border1">
+      <div class="comment_con_border2">
+        <div class="comment_con_border3">
+          <ul>
+            <% @quest_type.errors.full_messages.each do |msg| %>
+              <a class="error"><%= msg %></a><br/>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= label_tag :title %><br />
-    <%= text_area_tag :title,@quest_type.title %>
+  <div class="formspace">
+    <div class="formcenter">
+      <%= form_tag :action=>'create' do  %>
+        <div class="field">
+          <%= label_tag :title,t('quest_type.title') %><br />
+          <%= text_area_tag :title,@quest_type.title %>
+        </div>
+        <div class="actions">
+          <br/>
+          <%= submit_tag t('quest_type.save') %>
+        </div>
+      <% end %>
+      <br/>
+      <%= link_to t('quest_type.back'), :controller=>'quests' %>
+    </div>
   </div>
-
-  <div class="actions">
-    <br/>
-    <%= submit_tag %>
-  </div>
-<% end %>
-
-<%= link_to 'Back', :controller=>'quests' %>
 </div>

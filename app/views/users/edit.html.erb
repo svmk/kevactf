@@ -1,8 +1,8 @@
-<div class="quest_border">
-<h1>Editing user</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="vv">
+  <h1 class="main_title"><%= t('user.edit') %></h1>
+  <%= render 'form' %>
+  <div class="text-center">
+    <%= link_to t('user.show'), @user %> |
+    <%= link_to t('user.back'), users_path %>
+  </div>
 </div>

@@ -25,6 +25,7 @@ ru:
     new: Добавить
     edit: Изменить
     delete: Удалить
+    message: Сообщение
   comment:
     title: Заголовок
     message: Сообщение
@@ -42,10 +43,112 @@ ru:
           attributes:
             content:
               blank: Заполните поле "содержание"
+        user:
+          attributes:
+            nickname:
+              too_short: Слишком короткое поле "Ваш псевдоним"
+              blank: Пустое поле "Ваш псевдоним"
+            realname:
+              too_short: Слишком короткое поле "Ваше имя"
+              blank: Пустое поле "Ваше имя"
+            university:
+              too_short: Слишком короткое поле "Ваш университет"
+              blank: Пустое поле "Ваш университет"
+            email:
+              too_short: Слишком короткое поле "e-mail"
+              blank: Пустое поле "e-mail"
+              invalid: Вы неправильно ввели адрес электронной почты.
   scoreboard:
     title: ScoreBoard
     name: Имя
     score: Очки
     finished: Закончено
-
-  
+  quests:
+    title: Задания
+    new_quest_type: Создать новый тип квестов
+    new_quest: Создать квест
+    done: Вы уже выполнили это задание.
+    wrong: Неверный ответ
+    correct: Правильный ответ
+    too_fast: Слишком частые ответы. Задержка.
+  quest:
+    title: Заголовок
+    description: Описание
+    syscmd: Команда
+    price: Цена
+    type: Тип квеста
+    show: Показать
+    back: Назад
+    update: Обновить
+    enabled: Включен
+    disabled: Выключен
+    edit: Редактировать задание
+    new: Добавить задание
+    reply: Ответить
+  quest_type:
+    new: Добавить тип квеста
+    edit: Изменить тип квеста
+    title: Заголовок
+    save: Сохранить изменения
+    update: Обновить
+    back: Назад
+  registration:
+    title: Регистрация
+    realname: Ваше имя
+    nickname: Ваш псевдоним
+    university: Ваш университет
+    email: e-mail
+    register: Отправить
+    ended: Регистрация закончена
+    checkemail: Проверьте вашу почту
+    activated: Ваша заявка на участие принята.
+    notactivated: Не найдена ваша учетная запись. Пожалуйста, обратитесь к администратору.
+    emailerror: Ошибка при работе с почтой.
+  user:
+    new: Добавить пользователя
+    yes__: Да
+    no__: Нет
+    show: Показать
+    back: Назад
+    edit: Редактировать пользователя
+    realname: Настоящее имя
+    nickname: Псевдоним
+    university: Университет
+    email: e-mail
+    password: Пароль
+    price: Счет
+    enabled: Доступ разрешен?
+    admin: Является администратором?
+    send: Отправить
+    list: Список пользователей
+    name: Имя
+    admin_: Администратор
+    active: Активен
+    edit_: Изменить
+    delete: Удалить
+    dossier: Досье
+    status: Статус
+    administrator: Администратор
+    user: Пользователь
+  admin:
+    title: Страница администратора
+    yes__: Да
+    no__: Нет
+    irc: irc
+    email: email
+    news_comments: Разрешить комментирование новостей?
+    register_end: Окончание регистрации
+    register_enabled: Регистрация разрешена?
+    game_begin: Начало игры
+    game_end: Конец игры
+    game_enabled: Игра разрешена?
+    main_page_content: Содержание главной страницы
+    delay: Задрежка между правильными ответами для игроков
+    save: Сохранить
+    back: Назад
+  auth:
+    title: Авторизация
+    enter: Вход
+    username: Имя пользователя
+    password: Пароль
+    fail: Неверное имя пользователя или пароль. Попробуйте еще раз.

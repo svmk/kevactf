@@ -191,8 +191,9 @@ class UsersController < ApplicationController
           format.html { render :action => "register" }
         end
       end
+    else
+      render :template => "users/reg_end"
     end
-  else
-    render :template => "users/reg_end"
   end
+  
 end

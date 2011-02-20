@@ -1,7 +1,7 @@
-<div class="quest_border">
-<h1>New user</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', users_path %>
+<div class="vv">
+  <h1 class="main_title"><%= t('user.new') %></h1>
+  <%= render 'form' %>
+  <div class="text-center">
+    <%= link_to t('user.back'), users_path %>
+  </div>
 </div>

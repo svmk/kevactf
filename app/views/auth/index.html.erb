@@ -1,19 +1,16 @@
-<div class="auth_page">
-  <%= form_tag(auth_login_path, :method=>"post") do %>
-    <table>
-      <tbody>
-        <tr>
-          <td><%= label_tag(:login, "login:") %></td>
-          <td><%= text_field_tag(:login) %></td>
-        </tr>
-        <tr>
-          <td><%= label_tag(:password, "password:") %></td>
-          <td><%= password_field_tag(:password) %></td>
-        </tr>
-        <tr>
-          <td></td><td><%= submit_tag("Login") %></td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
+<h1><%= t('auth.title') %></h1>
+<div class="vv">
+  <br/>
+  <div class="formspace">
+    <div class="formcenter_auth">
+      <%= form_tag(auth_login_path, :method=>"post") do %>
+        <%= label_tag(:login, t('auth.username')) %><br/>
+        <%= text_field_tag(:login) %><br/>
+        <%= label_tag(:password, t('auth.password')) %><br/>
+        <%= password_field_tag(:password) %><br/>
+        <br/>
+        <%= submit_tag t('auth.enter') %><br/>
+      <% end %>
+    </div>
+  </div>
 </div>

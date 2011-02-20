@@ -1,11 +1,12 @@
-<div class="quest_border">
-  <h1>Dossier</h1>
+<h1><%= t('user.dossier') %></h1>
+<div class="vv">
+  <br/>
   <table class="user_info">
     <tbody>
-      <tr><td>Real Name</td><td><%= @user.realname %></td></tr>
-      <tr><td>Nickname</td><td><%= @user.nickname %></td></tr>
-      <tr><td>University</td><td><%= @user.university %></td></tr>
-      <tr><td>Status</td><td><%= @user.admin ? "Administrator" : "User" %></td></tr>
+      <tr><td><a><%= t('user.name') %></a></td><td><%= @user.realname %></td></tr>
+      <tr><td><a><%= t('user.nickname') %></a></td><td><%= @user.nickname %></td></tr>
+      <tr><td><a><%= t('user.university') %></a></td><td><%= @user.university %></td></tr>
+      <tr><td><a><%= t('user.status') %></a></td><td><%= @user.admin ? t('user.administrator') : t('user.user') %></td></tr>
     </tbody>
   </table>
 </div>

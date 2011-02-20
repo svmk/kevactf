@@ -1,29 +1,38 @@
-<div class="quest_border">
-  <h1><%= @quest.title %></h1>
-  <p style="font-size: 23px;"><%=  @quest.price.to_s %></p>
-  <p style="white-space:pre-wrap; "><%= raw  @quest.description %></p>
-  <%= form_tag url_for :action=>'answer',:id=>@quest.id do %>
+<h1><%= @quest.title %></h1>
+<div class="vv">
+  <div class="text-center price_value"><a><%=  @quest.price.to_s %></a></div>
+  <br/>
+  <div class="text-center">
+    <div id="quest_content"><%= raw  @quest.description %></div>
+    <div class="formspace">
+      <div class="formcenter">
+        <%= form_tag url_for :action=>'answer',:id=>@quest.id do %>
 
-    <%= text_field_tag(:answer) %>
-    <%= submit_tag("Reply")  %>
-  <% end %>
-  <% if @hints.length > 0 then %>
-    <ul>
-      <%  @hints.each do | hint |
-        if hint.show then %>
-          <li><%= raw hint.content %></li>
-        <% end
-      end
-    %></ul>
-    <%  if session[:admin] then %>
-      <table>
-        <tbody>
-          <tr>
-            <td><%= button_to('Edit',{:action=>'edit',:id=>@quest.id},:method=>'get') %></td>
-            <td><%= button_to('Delete',{:action=>'destroy',:id=>@quest.id},:method=>'delete',:confirm=>'Are you sure?') %></td>
-          </tr>
-        </tbody>
-      </table>
-    <%  end %>
-  <% end %>
+          <%= text_field_tag(:answer) %>
+          <%= submit_tag(t('quest.reply'))  %>
+        <% end %>
+      </div>
+    </div>
+    <% if @hints.length > 0 and false then %>
+      <ul>
+        <%  @hints.each do | hint |
+          if hint.show then %>
+            <li><%= raw hint.content %></li>
+          <% end
+        end
+      %></ul>
+    <% end %>
+  </div>
+  <%  if session[:admin] then %>
+    <div id="quest_footer">
+      <%= button_to(t('control.edit'),{:action=>'edit',:id=>@quest.id},:method=>'get') %> |
+      <%= button_to(t('control.delete'),{:action=>'destroy',:id=>@quest.id},:method=>'delete',:confirm=>'Are you sure?') %> |
+      <%= link_to(t('quest.back',{:action=>'index'})) %>
+    </div>
+  <% else %>
+  <div class="text-center">
+    <br/>
+    <%= link_to(t('quest.back',{:action=>'index'})) %>
+  </div>
+  <%  end %>
 </div>
