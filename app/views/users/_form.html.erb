@@ -27,12 +27,12 @@
       <%= f.label :price,t('user.price') %><br />
       <%= f.text_area :price %><br/>
       <%= f.label :enabled,t('user.enabled') %><br />
-      <select name="user[enabled]" id="enabled">
+      <select name="user[enabled]" id="user_enabled">
         <option value="0" <%= raw (not @user.enabled) ? 'selected="selected"' : '' %>><%= t('user.no__') %></option>
         <option value="1" <%= raw @user.enabled ? 'selected="selected"' : '' %>><%= t('user.yes__') %></option>
       </select><br/>
       <%= f.label :admin,t('user.admin') %><br />
-      <select name="user[admin]" id="admin">
+      <select name="user[admin]" id="user_admin">
         <option value="0" <%= raw (not @user.enabled) ? 'selected="selected"' : '' %>><%= t('user.no__') %></option>
         <option value="1" <%= raw @user.enabled ? 'selected="selected"' : '' %>><%= t('user.yes__') %></option>
       </select><br/>

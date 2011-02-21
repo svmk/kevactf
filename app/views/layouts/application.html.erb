@@ -3,9 +3,9 @@
   <head>
     <title><%= I18n.t 'main_page.title' %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="stylesheets/st.css?1297603413" media="screen" rel="stylesheet" type="text/css" />
-    <link href="stylesheets/common.css?1297603413" media="screen" rel="stylesheet" type="text/css" />
-    <link href="stylesheets/kevactf.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/st.css?1297603413" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/common.css?1297603413" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/kevactf.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id="all">
@@ -44,7 +44,14 @@
 
       <div id="ct"><%= yield %></div>
       <div id="ft">
-        <div class="l"><% if @irc != '' then %><a>irc: <a><%= @irc %></a></a><% end %><% if @email!= '' then %> <a>email: <a href="mailto:<%= @email %>"><%= @email %></a></a><% end %></div>
+        <div class="l">
+          <% if @irc != '' then %>
+            <a>irc: <%= @irc %></a>
+          <% end %>
+          <% if @email!= '' then %>
+            <a>email: </a><a href="mailto:<%= @email %>"><%= @email %></a>
+          <% end %>
+        </div>
         <div class="c">development &amp; design by <a href="http://keva.su">KEVA</a> Team</div>
       </div>
     </div>

@@ -16,13 +16,13 @@
   <br/>
   <div class="register_form">
     <%= form_tag((url_for :action=>'do_register'),:method=>'post') do %>
-      <%= label :realname, t('registration.realname') %><br/>
+      <%= label_tag :realname, t('registration.realname') %><br/>
       <%= text_field_tag :realname,@user.realname %><br/>
-      <%= label :realname, t('registration.nickname') %><br/>
+      <%= label_tag :realname, t('registration.nickname') %><br/>
       <%= text_field_tag :nickname,@user.nickname%><br/>
-      <%= label :realname, t('registration.university') %><br/>
+      <%= label_tag :realname, t('registration.university') %><br/>
       <%= text_field_tag :university,@user.university%><br/>
-      <%= label :realname, t('registration.email') %><br/>
+      <%= label_tag :realname, t('registration.email') %><br/>
       <%= text_field_tag :email,@user.email%><br/>
       <br/>
       <%= submit_tag t('registration.register') %>

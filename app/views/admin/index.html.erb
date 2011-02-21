@@ -2,6 +2,7 @@
 <div class="vv">
   <div class="formspace">
     <div class="formcenter" id="admin_page">
+      <br/>
   <%= form_tag :action=>'update' do  %>
       <%= label_tag :irc,t('admin.irc') %><br />
       <%= text_area_tag :irc, @irc %><br />
@@ -10,11 +11,12 @@
       <%= label_tag :news_comments,t('admin.news_comments') %><br />
       <%= select_tag :news_comments, raw ("<option" +
           ((@news_comments == "Disabled") ? ' selected="selected" ' : "") +
-          ">" + t('admin.no__') + "</option>" +"<option" +
+          " value=\"Disabled\">" + t('admin.no__') + "</option>" +"<option value=\"Enabled\"" +
           ((@news_comments == "Enabled") ? ' selected="selected" ' : "") +
           ">" + t('admin.yes__') + "</option>") %><br />
-      <%= label_tag :register_end,t('admin.register_end') %><br />
-      <%= select_time @register_end,:prefix=>'register_end' %>
+      <%= label_tag nil,t('admin.register_end') %><br />
+      <%= select_hour @register_end.hour,:prefix=>'register_end' %> : 
+      <%= select_minute @register_end.min,:prefix=>'register_end' %>
       <%= select_day @register_end.day,:prefix=>'register_end' %>
       <%= select_month(@register_end.month,
         :use_month_names => %w(January February March April May June July August September October November December),
@@ -23,18 +25,20 @@
       <%= label_tag :register_enabled,t('admin.register_enabled') %><br />
       <%= select_tag :register_enabled, raw ("<option" +
           ((@register_enabled == "Disabled") ? ' selected="selected" ' : "") +
-          ">" + t('admin.no__') + "</option>" + "<option" +
+          " value=\"Disabled\">" + t('admin.no__') + "</option>" + "<option" +
           ((@register_enabled == "Enabled") ? ' selected="selected" ' : "") +
-          ">" + t('admin.yes__') + "</option>") %><br />
-      <%= label_tag :game_begin,t('admin.game_begin') %><br />
-      <%= select_time @game_begin,:prefix=>'game_begin' %>
+          " value=\"Enabled\">" + t('admin.yes__') + "</option>") %><br />
+      <%= label_tag nil,t('admin.game_begin') %><br />
+      <%= select_hour @game_begin.hour,:prefix=>'game_begin' %> :
+      <%= select_minute @game_begin.min,:prefix=>'game_begin' %>
       <%= select_day @game_begin.day,:prefix=>'game_begin' %>
       <%= select_month(@game_begin.month,
         :use_month_names => %w(January February March April May June July August September October November December),
         :prefix=>'game_begin') %>
       <%= select_year @game_begin.year,:prefix=>'game_begin' %><br />
-      <%= label_tag :game_end,t('admin.game_end') %><br />
-      <%= select_time @game_end,:prefix=>'game_end' %>
+      <%= label_tag nil,t('admin.game_end') %><br />
+      <%= select_hour @game_end.hour,:prefix=>'game_end' %> :
+      <%= select_minute @game_end.min,:prefix=>'game_end' %>
       <%= select_day @game_end.day,:prefix=>'game_end' %>
       <%= select_month(@game_end.month,
         :use_month_names => %w(January February March April May June July August September October November December),
@@ -43,12 +47,12 @@
       <%= label_tag :game_enabled,t('admin.game_enabled') %><br />
       <%= select_tag :game_enabled, raw ("<option" +
           ((@game_enabled == "Disabled") ? ' selected="selected" ' : "") +
-          ">" + t('admin.no__') + "</option>" + "<option" +
+          " value=\"Disabled\">" + t('admin.no__') + "</option>" + "<option" +
           ((@game_enabled == "Enabled") ? ' selected="selected" ' : "") +
-          ">" + t('admin.yes__') + "</option>") %><br />
+          " value=\"Enabled\">" + t('admin.yes__') + "</option>") %><br />
       <%= label_tag :main_page_content,t('admin.main_page_content') %><br />
       <%= text_area_tag :main_page_content, @main_page_content %><br />
-      <%= label_tag :user_delay,t('admin.delay') %><br />
+      <%= label_tag nil,t('admin.delay') %><br />
       <%= select_time @user_delay,:prefix=>'user_delay',:include_seconds => true %><br/>
       <br />
       <%= submit_tag t('admin.save') %>
