@@ -14,7 +14,16 @@ class CreateUsers < ActiveRecord::Migration
       
       t.timestamps
     end
-    User.create :nickname=>'admin',:realname=>'admin',:university=>'university',:email=>'admin@admin.admin', :enabled=>true,:admin=>true,:md5hash=>''
+    User.create :nickname=>'admin',
+                :realname=>'admin',
+                :university=>'university',
+                :email=>'admin@admin.admin',
+                :password => 'admin',
+                :enabled=>true,
+                :admin=>true,
+                :price => 0,
+                :md5hash=>'',
+                :last_time=>DateTime.now
   end
 
   def self.down

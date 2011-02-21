@@ -77,7 +77,8 @@ ActiveRecord::Schema.define(:version => 20110118081650) do
     t.boolean  "enabled"
     t.boolean  "admin"
     t.integer  "price"
-    t.text     "hash"
+    t.text     "md5hash"
+    t.time     "last_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

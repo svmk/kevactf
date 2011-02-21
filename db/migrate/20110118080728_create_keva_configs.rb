@@ -16,7 +16,7 @@ class CreateKevaConfigs < ActiveRecord::Migration
     KevaConfig.create :key => 'game_enabled', :value => 'Disabled'
     KevaConfig.create :key => 'main_page_content', :value => ''
     KevaConfig.create :key => 'main_page_content', :value => ''
-    KevaConfig.create :key => 'user_dalay', :value => ''
+    KevaConfig.create :key => 'user_delay', :value => 'Thu, 01 Jan 1970 00:00:00 UTC'
   end
 
   def self.down

@@ -136,6 +136,7 @@ class QuestsController < ApplicationController
         KevaConfig.where(:key=>'game_enabled').first.value == 'Enabled' or session[:admin] then
       if User.exists?(session[:user_id]) then
         user = User.find(session[:user_id])
+        logger.debug "User -------------------------------------- #{user.inspect}"
         if not user.enabled then
           redirect_to :controller=>'auth',:action=>'logout'
           return
@@ -147,7 +148,6 @@ class QuestsController < ApplicationController
           return
         else
           user.last_time = DateTime.now
-          user.save
         end
         if Quest.exists?(params[:id]) and user.enabled  then
           @quest = Quest.find(params[:id])
@@ -161,6 +161,7 @@ class QuestsController < ApplicationController
             @quest.user = @quest.user + [user]
             user.price = user.price + @quest.price
           end
+          user.save
           respond_to do |format|
             if quest_done then
               format.html {render :action => 'good_answer'}

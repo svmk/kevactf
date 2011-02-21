@@ -2,7 +2,7 @@
 <div class="vv">
   <% if @news.count <= 0 and session[:admin] then # url_for() %>
     <br/>
-    <%= link_to 'New news',{:controller=>'news',:action=>'new'},{:class=>'new_news_item'} %>
+    <%= link_to t('news.new_item'),{:controller=>'news',:action=>'new'},{:class=>'new_news_item'} %>
     <br/>
   <% end %>
   <% kevaconf = KevaConfig.where(:key => 'news_comments').first %>
