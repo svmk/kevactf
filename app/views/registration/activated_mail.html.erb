@@ -4,18 +4,18 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Welcome to KEVA CTF, <%= @user.realname %></h1>
+    <h1><%= t('mail.welcome') %> <%= @user.realname %></h1>
     <p>
-      You have successfully activated your account,
-      your nickname is: <%= @user.nickname %>.<br/>
+      <%= t('mail.success_account1') %>
+      <%= t('mail.success_account2') %> <%= @user.nickname %>.<br/>
     </p>
     <p>
-      Your password will be sent later.
+      <%= t('mail.password_later') %>
     </p>
     <p>
-      We remind you that the game will begin at <%= KevaConfig.where(:key=>'game_begin').first.value %>.
-      The game will end in <%= KevaConfig.where(:key=>'game_end').first.value %>.
+      <%= t('mail.remaind_begin') %> <%= KevaConfig.where(:key=>'game_begin').first.value %>.
+      <%= t('mail.remaind_end') %> <%= KevaConfig.where(:key=>'game_end').first.value %>.
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p><%= t('mail.thanks') %></p>
   </body>
 </html>
