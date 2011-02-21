@@ -9,11 +9,12 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :enabled
       t.boolean :admin
       t.integer :price
-      t.text :hash
+      t.text :md5hash
       t.time :last_time
       
       t.timestamps
     end
+    User.create :nickname=>'admin',:realname=>'admin',:univeristy=>'university',:email=>'admin@admin.admin', :enabled=>true,:admin=>true,:md5hash=>''
   end
 
   def self.down

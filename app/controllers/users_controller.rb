@@ -59,9 +59,11 @@ class UsersController < ApplicationController
   def create
     if session[:admin] then
       @user = User.new(params[:user])
-
+      logger.debug "================== User: #{@user.inspect}"
+      render 'public/404'
+      return;
       respond_to do |format|
-        if @user.save
+        if @user.save then
           format.html { redirect_to :action=>'index', :notice => 'User was successfully created.' }
         else
           format.html { render :action => "new" }
@@ -134,7 +136,7 @@ class UsersController < ApplicationController
   # GET /activate
   def activate
     user = User.where(:md5hash => params[:key]).first
-    if user then
+    if user and user.md5hash !='' then
       user.enabled = true
       email = Registration.activated_mail(user,request.host)
       email.deliver
