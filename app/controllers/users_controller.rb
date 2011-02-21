@@ -59,9 +59,6 @@ class UsersController < ApplicationController
   def create
     if session[:admin] then
       @user = User.new(params[:user])
-      logger.debug "================== User: #{@user.inspect}"
-      render 'public/404'
-      return;
       respond_to do |format|
         if @user.save then
           format.html { redirect_to :action=>'index', :notice => 'User was successfully created.' }
