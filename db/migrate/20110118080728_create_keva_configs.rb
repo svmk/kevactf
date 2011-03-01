@@ -17,6 +17,7 @@ class CreateKevaConfigs < ActiveRecord::Migration
     KevaConfig.create :key => 'main_page_content', :value => ''
     KevaConfig.create :key => 'main_page_content', :value => ''
     KevaConfig.create :key => 'user_delay', :value => 'Thu, 01 Jan 1970 00:00:00 UTC'
+    KevaConfig.create :key => 'countdown', :value=>'Disabled'
   end
 
   def self.down

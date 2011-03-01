@@ -8,6 +8,12 @@
       <%= text_field_tag :irc, @irc %><br />
       <%= label_tag :email,t('admin.email') %><br />
       <%= text_field_tag :email, @email %><br />
+      <%= label_tag :countdown, t('admin.enable_countdown') %><br />
+      <%= select_tag :countdown, raw ("<option" +
+          ((@countdown == "Disabled") ? ' selected="selected" ' : "") +
+          " value=\"Disabled\">" + t('admin.no__') + "</option>" +"<option value=\"Enabled\"" +
+          ((@countdown == "Enabled") ? ' selected="selected" ' : "") +
+          ">" + t('admin.yes__') + "</option>") %><br />
       <%= label_tag :news_comments,t('admin.news_comments') %><br />
       <%= select_tag :news_comments, raw ("<option" +
           ((@news_comments == "Disabled") ? ' selected="selected" ' : "") +

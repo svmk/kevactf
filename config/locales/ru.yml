@@ -1,5 +1,3 @@
-## YAML Template.
----
 ru:
   main_page:
     title: T4K - TUSUR Challenge Competition - TUSUR Challenge
@@ -12,6 +10,7 @@ ru:
     scoreboard: ScoreBoard
     news: Новости
     main_page: Главная страница
+    countdown: Обратный отсчет
   news:
     title_new: Заголовок
     title: Новости
@@ -153,6 +152,7 @@ ru:
     send_passwords: Отправить пароли
     email_sended: Пароли отпаравлены
     email_fail: Ошибки при отправки паролей
+    enable_countdown: Включить обратный отсчет
   auth:
     title: Авторизация
     enter: Вход

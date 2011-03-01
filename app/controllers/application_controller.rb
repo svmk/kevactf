@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     @email = KevaConfig.where(:key => 'email').first.value
     @game_enabled = KevaConfig.where(:key => 'game_enabled').first.value == "Enabled"
     @register_enabled = KevaConfig.where(:key => 'register_enabled').first.value == "Enabled"
+    @countdown = KevaConfig.where(:key => 'countdown').first.value == "Enabled"
 
     register_end_str = KevaConfig.where(:key => 'register_end').first.value
     if register_end_str!='' then

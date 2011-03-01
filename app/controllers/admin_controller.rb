@@ -14,6 +14,7 @@ class AdminController < ApplicationController
       game_enabled_item = KevaConfig.where(:key => 'game_enabled').first
       main_page_content_item = KevaConfig.where(:key => 'main_page_content').first
       user_delay_item = KevaConfig.where(:key => 'user_delay').first
+      countdown_item = KevaConfig.where(:key => 'countdown').first
       
       @irc = irc_item ? irc_item.value : ""
       @email = email_item ? email_item.value : ""
@@ -25,6 +26,7 @@ class AdminController < ApplicationController
       @game_enabled = game_enabled_item ? game_enabled_item.value : "Disabled"
       @main_page_content = main_page_content_item ? main_page_content_item.value : ""
       @user_delay = user_delay_item ? DateTime.parse(user_delay_item.value) : nil
+      @countdown = countdown_item ? countdown_item.value : "Disabled"
       respond_to do |format|
         format.html # new.html.erb
       end
@@ -121,7 +123,7 @@ class AdminController < ApplicationController
   # POST /admin/send_passwords
   def send_passwords
     users = User.where(:admin=>false)
-    @email_errors = ['vvv']
+    @email_errors = []
     @emails = []
     for user in users do
       email = Registration.password_mail(user,request.host)
@@ -133,7 +135,7 @@ class AdminController < ApplicationController
         @emails = @emails + [user.email]
       end
     end
-    if @email_errors.length > 0 and false then
+    if @email_errors.length > 0 then
       render 'admin/email_fail'
     else
       render 'admin/email_sended'
