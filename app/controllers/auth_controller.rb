@@ -2,7 +2,6 @@ class AuthController < ApplicationController
   # GET /auth
   def index
     @logged = session[:logged]
-    logger.debug "Logged: #{@logged}"
     if not @logged then
     respond_to do |format|
       format.html # index.html.erb
@@ -16,16 +15,16 @@ class AuthController < ApplicationController
   def login
     login = params[:login]
     password = params[:password]
-    user = User.where(:nickname => login)
+    user = User.where(:nickname => login).first
     @logged = session[:logged] or false
     @admin = session[:admin] or false
-    if user and user.length > 0 then
-      if user[0].nickname == password and user[0].enabled then
+    if user then
+      if user.password == password and user.enabled then
         @logged = true
-        if user[0].admin then
+        if user.admin then
           @admin = true
         end
-        session[:user_id] = user[0].id
+        session[:user_id] = user.id
         session[:logged]  = @logged
         session[:admin ]  = @admin
       end

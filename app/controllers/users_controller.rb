@@ -94,7 +94,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
+  # DELETE /users/1/delete
   def destroy
     if session[:admin] and User.exists?(params[:id]) then
       @user = User.find(params[:id])

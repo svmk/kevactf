@@ -150,6 +150,9 @@ ru:
     delay: Задрежка между правильными ответами для игроков
     save: Сохранить
     back: Назад
+    send_passwords: Отправить пароли
+    email_sended: Пароли отпаравлены
+    email_fail: Ошибки при отправки паролей
   auth:
     title: Авторизация
     enter: Вход
@@ -168,3 +171,4 @@ ru:
     your_nickname: "Ваш никнейм:"
     your_password: "Ваш пароль:"
     success_account2: "ваш псевдоним:"
+    sended_email_to: Отправлин пароль на 

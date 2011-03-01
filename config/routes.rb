@@ -30,7 +30,10 @@ Kevactf::Application.routes.draw do
   match 'scoreboard/' => 'score_board#index'
   match 'admin/' => 'admin#index'
   match 'admin/update/' => 'admin#update'
+  match 'admin/send_passwords/' => 'admin#send_passwords'
   match 'users/:id/' => 'users#show'
+  match 'users/:id/delete' => 'users#destroy'
+  match 'users/:id/edit' => 'users#edit'
   match 'register/' => 'users#register'
   match 'activate/:key' => 'users#activate'
   match 'user_not_exists' => 'users#message_fail'
@@ -38,6 +41,7 @@ Kevactf::Application.routes.draw do
   match 'do_register/' => 'users#do_register'
   match 'check_email/' => 'users#check_email'
   match 'email_error/' => 'users#email_error'
+  match 'countdown/' => 'countdown#index'
   root :to => "main_page#index"
 #  resources :quests
   # The priority is based upon order of creation:

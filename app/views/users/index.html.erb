@@ -24,9 +24,9 @@
     <td><%= user.price %></td>
     <td><%= user.enabled ? t('user.yes__') : t('user.no__') %></td>
     <td><%= user.admin ? t('user.yes__') : t('user.no__') %></td>
-    <td><%= link_to t('user.show'), user %></td>
-    <td><%= link_to t('user.edit_'), edit_user_path(user) %></td>
-    <td><%= link_to t('user.delete'), user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= button_to t('user.show'), user %></td>
+    <td><%= button_to t('user.edit_'), edit_user_path(user) %></td>
+    <td><%= button_to t('user.delete'), url_for(:controller=>'users',:action=>'destroy',:id=>user.id), :confirm => 'Are you sure?',:method=>'delete' %></td>
   </tr>
 <% end %>
 </table>

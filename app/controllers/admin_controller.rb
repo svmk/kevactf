@@ -1,7 +1,9 @@
 class AdminController < ApplicationController
   # GET /admin
   def index
+    logger.debug "Admin page: #{session[:admin].inspect}"
     if session[:admin] then
+      @email_errors = []
       irc_item = KevaConfig.where(:key => 'irc').first
       email_item = KevaConfig.where(:key => 'email').first
       news_comments_item = KevaConfig.where(:key => 'news_comments').first
@@ -114,6 +116,27 @@ class AdminController < ApplicationController
       redirect_to :action=>'index'
     else
       render :template => "public/404",  :status => 404
+    end
+  end
+  # POST /admin/send_passwords
+  def send_passwords
+    users = User.where(:admin=>false)
+    @email_errors = ['vvv']
+    @emails = []
+    for user in users do
+      email = Registration.password_mail(user,request.host)
+      if email.deliver.errors.any? then
+        mail.deliver.errors.full_messages.each do | msg |
+          @email_errors = @email_errors + [msg]
+        end
+      else
+        @emails = @emails + [user.email]
+      end
+    end
+    if @email_errors.length > 0 and false then
+      render 'admin/email_fail'
+    else
+      render 'admin/email_sended'
     end
   end
 end

@@ -5,9 +5,9 @@
       <br/>
   <%= form_tag :action=>'update' do  %>
       <%= label_tag :irc,t('admin.irc') %><br />
-      <%= text_area_tag :irc, @irc %><br />
+      <%= text_field_tag :irc, @irc %><br />
       <%= label_tag :email,t('admin.email') %><br />
-      <%= text_area_tag :email, @email %><br />
+      <%= text_field_tag :email, @email %><br />
       <%= label_tag :news_comments,t('admin.news_comments') %><br />
       <%= select_tag :news_comments, raw ("<option" +
           ((@news_comments == "Disabled") ? ' selected="selected" ' : "") +
@@ -57,6 +57,8 @@
       <br />
       <%= submit_tag t('admin.save') %>
   <% end %>
+      <br />
+      <%= button_to (t('admin.send_passwords'),{:action=>'send_passwords'}) %>
       <br />
 <%= link_to t('admin.back'), :controller=>'quests' %>
 </div>
