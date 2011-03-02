@@ -1,0 +1,17 @@
+<h1><%= t('control.message') %></h1>
+<div class="vv">
+      <div class="comment_con_border1">
+      <div class="comment_con_border2">
+        <div class="comment_con_border3">
+          <ul>
+            <% @emails.each do |msg| %>
+              <a class="error"><%= t('admin.sended_email_to') %><%= msg %></a><br/>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <div class="message">
+  <a class="message_a"><%=  t('admin.email_sended') %></a>
+  </div>
+</div>
