@@ -168,7 +168,7 @@ class UsersController < ApplicationController
   # GET /do_register
   def do_register
     register_end_str = KevaConfig.where(:key => 'register_end').first.value
-    if DateTime.now > ((register_end_str!='') ?
+    if DateTime.now < ((register_end_str!='') ?
           DateTime.parse(register_end_str) : DateTime.now) and
         KevaConfig.where(:key=>'register_enabled').first.value == "Enabled" or
         session[:admin] then
@@ -182,8 +182,8 @@ class UsersController < ApplicationController
         :enabled => false,
         :admin => false,
         :price => 0,
-        :md5hash => Digest::MD5.hexdigest(rand(10000000000000000000000).to_s,
-        :last_time => DateTime.now))
+        :md5hash => Digest::MD5.hexdigest(rand(10000000000000000000000).to_s),
+        :last_time => DateTime.now)
 
       respond_to do |format|
         if @user.save
