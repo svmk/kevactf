@@ -141,6 +141,7 @@ class UsersController < ApplicationController
     user = User.where(:md5hash => params[:key]).first
     if user and user.md5hash !='' then
       user.enabled = true
+      user.save
       email = Registration.activated_mail(user,request.host)
       email.deliver
       redirect_to :action=>'message_ok'
