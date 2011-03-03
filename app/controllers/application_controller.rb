@@ -38,6 +38,11 @@ class ApplicationController < ActionController::Base
     
     @admin = session[:admin]
     @logged_in = session[:logged]
+    if @logged_in and not User.exists?(session[:user_id]) then
+      session[:admin] = false
+      session[:logged] = false
+      session[:user_id] = 0
+    end
   end
   def clean_session
     #session.sweep("8 hours")
