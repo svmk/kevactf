@@ -1,5 +1,5 @@
 class Registration < ActionMailer::Base
-  default :from => "svmk-tmsk@yandex.ru" #"ctf@keva.su"
+  default :from => "info@keva.su" 
   def activated_mail(user,hostname)
     if user then
       @hostname = hostname

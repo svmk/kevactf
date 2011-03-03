@@ -186,15 +186,18 @@ class UsersController < ApplicationController
         :last_time => DateTime.now)
 
       respond_to do |format|
-        if @user.save
+        if @user then
           email = Registration.registration_mail(@user,request.host)
           if email and not email.deliver.errors.any? then
-            format.html { redirect_to :action=>'check_email'}
+            if @user.save then
+              format.html { redirect_to :action=>'check_email'}
+            else
+              format.html { render :action => "register" }
+            end
           else
             format.html { redirect_to :action=>'email_error'}
           end
-        else
-          format.html { render :action => "register" }
+          
         end
       end
     else
