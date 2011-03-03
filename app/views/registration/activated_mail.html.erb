@@ -6,14 +6,14 @@
   <body>
     <h1><%= t('mail.welcome') %> <%= @user.realname %></h1>
     <p>
-      <%= t('mail.success_account1') %>
-      <%= t('mail.success_account2') %> <%= @user.nickname %>.<br/>
+      <%= t('mail.success_account1') %><br/>
+      <%= t('mail.your_nickname') %> <%= @user.nickname %>.<br/>
     </p>
     <p>
       <%= t('mail.password_later') %>
     </p>
     <p>
-      <%= t('mail.remaind_begin') %> <%= KevaConfig.where(:key=>'game_begin').first.value %>.
+      <%= t('mail.remaind_begin') %> <%= KevaConfig.where(:key=>'game_begin').first.value %>.<br/>
       <%= t('mail.remaind_end') %> <%= KevaConfig.where(:key=>'game_end').first.value %>.
     </p>
     <p><%= t('mail.thanks') %></p>

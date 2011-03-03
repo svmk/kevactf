@@ -140,6 +140,7 @@ class UsersController < ApplicationController
   def activate
     user = User.where(:md5hash => params[:key]).first
     if user and user.md5hash !='' then
+      user.md5hash = ''
       user.enabled = true
       user.save
       email = Registration.activated_mail(user,request.host)
