@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_filter :verify_connection
   before_filter :show_info
   before_filter :clean_session
   rescue_from ActionController::RoutingError, :with => :record_not_found
