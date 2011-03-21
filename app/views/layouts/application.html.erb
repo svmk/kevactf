@@ -18,7 +18,7 @@
               <li><%= link_to t('main_page.scoreboard'), scoreboard_path, :class=>'menu_item'%></li>
               <li><%= link_to t('main_page.quests'), quests_path, :class=>'menu_item'%></li>
             <% end %>
-            <% if @register_enabled and @register_end_time > DateTime.now  or @admin then %>
+            <% if @register_enabled and @register_end_time > DateTime.now and not session[:logged]  or @admin then %>
               <li><%= link_to t('main_page.register'), register_path, :class=>'menu_item'%></li>
             <% end %>
             <% if @countdown then %>

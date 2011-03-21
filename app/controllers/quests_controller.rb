@@ -9,7 +9,7 @@ class QuestsController < ApplicationController
           DateTime.now) and
         KevaConfig.where(:key=>'game_enabled').first.value == 'Enabled' or
         session[:admin] then
-      @quests = Quest.order("price DESC,quest_type_id ASC").all
+      @quests = Quest.order("price ASC,quest_type_id ASC").all
       @quest_types = QuestType.order("id ASC")
       respond_to do |format|
         format.html # index.html.erb
