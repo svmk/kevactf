@@ -155,8 +155,8 @@ class QuestsController < ApplicationController
             render 'quests/already_done'
             return 
           end
-          answer = Base64.encode64(params[:answer])
-          quest_done = (system(@quest.syscmd.to_s + ' ' + answer.strip.upcase.to_s) == 1)
+          answer = Base64.encode64(params[:answer].strip.upcase)
+          quest_done = (system(@quest.syscmd.to_s + ' ' + answer.strip.to_s) == 1)
           if quest_done and not @quest.user.exists?(session[:user_id]) then
             @quest.user = @quest.user + [user]
             user.price = user.price + @quest.price
