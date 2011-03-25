@@ -1,38 +1,38 @@
 <h1><%= t('user.list') %></h1>
 <div class="vv">
   <div id="user_list">
-<table>
-  <tr>
-    <th><%= t('user.name') %></th>
-    <th><%= t('user.nickname') %></th>
-    <th><%= t('user.university') %></th>
-    <th><%= t('user.email') %></th>
-    <th><%= t('user.price') %></th>
-    <th><%= t('user.active') %></th>
-    <th><%= t('user.admin_') %></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <table>
+      <tr>
+        <th><%= t('user.name') %></th>
+        <th><%= t('user.nickname') %></th>
+        <th><%= t('user.university') %></th>
+        <th><%= t('user.email') %></th>
+        <th><%= t('user.price') %></th>
+        <th><%= t('user.active') %></th>
+        <th><%= t('user.admin_') %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.realname %></td>
-    <td><%= user.nickname %></td>
-    <td><%= user.university %></td>
-    <td><%= user.email %></td>
-    <td><%= user.price %></td>
-    <td><%= user.enabled ? t('user.yes__') : t('user.no__') %></td>
-    <td><%= user.admin ? t('user.yes__') : t('user.no__') %></td>
-    <td><%= button_to t('user.show'), user %></td>
-    <td><%= button_to t('user.edit_'), edit_user_path(user) %></td>
-    <td><%= button_to t('user.delete'), url_for(:controller=>'users',:action=>'destroy',:id=>user.id), :confirm => 'Are you sure?',:method=>'delete' %></td>
-  </tr>
-<% end %>
-</table>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.realname %></td>
+          <td><%= user.nickname %></td>
+          <td><%= user.university %></td>
+          <td><%= user.email %></td>
+          <td><%= user.price %></td>
+          <td><%= user.enabled ? t('user.yes__') : t('user.no__') %></td>
+          <td><%= user.admin ? t('user.yes__') : t('user.no__') %></td>
+          <td><%= button_to t('user.show'), user %></td>
+          <td><%= button_to t('user.edit_'), edit_user_path(user) %></td>
+          <td><%= button_to t('user.delete'), url_for(:controller=>'users',:action=>'destroy',:id=>user.id), :confirm => 'Are you sure?',:method=>'delete' %></td>
+        </tr>
+      <% end %>
+    </table>
 
-<br />
+    <br />
 
-<%= link_to t('user.new'), new_user_path %>
-</div>
+    <%= link_to t('user.new'), new_user_path %>
+  </div>
 </div>

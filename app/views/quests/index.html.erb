@@ -26,7 +26,6 @@
     <tbody>
       <%
       if @quests.length > 0 then
-        prev_price = @quests.first.price
         i = 0
         while i < @quests.length do
         %><tr><%
@@ -36,16 +35,11 @@
                 break
               end
               quest = @quests[i]
-              if quest.price != prev_price then
-                prev_price = quest.price
-                break
-              end
               quest_class='quest_item'
               if not quest.show then
                 quest_class = 'quest_item_disabled'
               end
               if quest.quest_type_id != quest_type.id then
-              %><td></td><%
               else %>
                 <td>
                   <%= link_to quest.price.to_s,{:action=>'show',:id=>quest.id},:class=>quest_class %>
