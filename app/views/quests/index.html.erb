@@ -2,10 +2,10 @@
 <div class="vv">
   <br/>
   <% if session[:admin] and (@quests.length <= 0 or @quest_types.length<=0) %>
-  <div class="quest_admin_field">
-    <%= button_to(t('quests.new_quest_type'),{:controller=>'quest_types',:action=>'new'},:method=>'get')%>
-    <%= button_to(t('quests.new_quest'),{:action=>'new'},:method=>'get') %>
-  </div>
+    <div class="quest_admin_field">
+      <%= button_to(t('quests.new_quest_type'),{:controller=>'quest_types',:action=>'new'},:method=>'get')%>
+      <%= button_to(t('quests.new_quest'),{:action=>'new'},:method=>'get') %>
+    </div>
     <br/>
   <% end %>
   <table class="quests_table" border="1" frame="void" rules="none" cellpadding="14">
@@ -25,40 +25,44 @@
     </thead>
     <tbody>
       <%
-      if @quests.length > 0 then
-        i = 0
-        while i < @quests.length do
-        %><tr><%
-            for j in (0..@quest_types.length-1)
-              quest_type = @quest_types[j]
-              if i >= @quests.length
+      qts = {}
+      @quest_types.each do |quest_type|
+        qts[quest_type.id] = -1
+      end
+      begin
+      %><tr><%
+          @quest_types.each do |item|
+            id = item.id
+            pos = qts[id]
+            if qts[id] == -1 then
+              qts[id] = 0
+            end
+            while (qts[id] < @quests.length) do
+              if @quests[qts[id]].quest_type.id == id and qts[id] != pos then
                 break
               end
-              quest = @quests[i]
-              quest_class='quest_item'
-              if not quest.show then
-                quest_class = 'quest_item_disabled'
-              end
-              if quest.quest_type_id != quest_type.id then
-              else %>
-                <td>
-                  <%= link_to quest.price.to_s,{:action=>'show',:id=>quest.id},:class=>quest_class %>
-                  <% if session[:admin] then %>
-                    <%= button_to(t('control.new'),{:action=>'new'},:method=>'get') %>
-                    <%= button_to(t('control.edit'),{:action=>'edit',:id=>quest.id},:method=>'get') %>
-                    <%= button_to(t('control.delete'),{:action=>'destroy',:id=>quest.id},:method=>'delete',:confirm=>'Are you sure?') %>
-                  <% end %>
-                </td><%
-                if i >= @quests.length then
-                  break
-                end
-                i = i + 1
-              end
-
+              qts[id] = qts[id] + 1
             end
-          %></tr><%
+            if qts[id] < @quests.length  then
+            %><td><%= link_to @quests[qts[id]].price,{:action=>'edit',:id=>@quests[qts[id]].id} %>
+                <% if session[:admin] %>
+                  <br/>
+                  <%= button_to t('control.new'),{:controller=>'quests',:action=>'new'},:method=>'get' %>
+                  <%= button_to t('control.edit'),{:controller=>'quests',:action=>'edit',:id=>@quests[qts[id]].id},:method=>'get' %>
+                  <%= button_to t('control.delete'),{:controller=>'quests',:action=>'destroy',:id=>@quests[qts[id]].id},:method=>'delete' %>
+                  <br/>
+                <% end %>
+              </td>
+            <% else %><td></td><%
+
+              end
+          end
+        %></tr><%
+        shall_exit = true
+        qts.each do |indx,val|
+          shall_exit = (val >= @quests.length and shall_exit)
         end
-      end
+      end until shall_exit
     %>
     </tbody>
   </table>
