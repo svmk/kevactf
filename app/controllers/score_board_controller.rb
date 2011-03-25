@@ -3,7 +3,7 @@ class ScoreBoardController < ApplicationController
   def index
     game_begin_str = KevaConfig.where(:key => 'game_begin').first.value
     if ((game_begin_str!='') ? DateTime.parse(game_begin_str) :
-          DateTime.now) > DateTime.now or session[:admin] then
+          DateTime.now) < DateTime.now or session[:admin] then
       @finished_count = Quest.where(:show => true).count
       @users = User.where(:enabled => true, :admin => false).order("price DESC")
       respond_to do |format|
