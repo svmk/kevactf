@@ -14,7 +14,7 @@
           <ul>
             <li><%= link_to t('main_page.main_page'), root_path, :class=>'menu_item'%></li>
             <li><%= link_to t('main_page.news'), news_path, :class=>'menu_item'%></li>
-            <% if @game_enabled and @game_begin_time > DateTime.now or @admin then %>
+            <% if @game_enabled and @game_begin_time < DateTime.now or @admin then %>
               <li><%= link_to t('main_page.scoreboard'), scoreboard_path, :class=>'menu_item'%></li>
               <li><%= link_to t('main_page.quests'), quests_path, :class=>'menu_item'%></li>
             <% end %>
