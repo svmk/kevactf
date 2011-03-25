@@ -44,7 +44,7 @@
               qts[id] = qts[id] + 1
             end
             if qts[id] < @quests.length  then
-            %><td><%= link_to @quests[qts[id]].price,{:action=>'edit',:id=>@quests[qts[id]].id} %>
+            %><td><%= link_to @quests[qts[id]].price,{:action=>'show',:id=>@quests[qts[id]].id} %>
                 <% if session[:admin] %>
                   <br/>
                   <%= button_to t('control.new'),{:controller=>'quests',:action=>'new'},:method=>'get' %>
