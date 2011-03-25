@@ -1,4 +1,6 @@
 Kevactf::Application.routes.draw do
+  get "user_answer/answer"
+
   #resources :news
   resources :users
   resources :quests
@@ -42,6 +44,7 @@ Kevactf::Application.routes.draw do
   match 'check_email/' => 'users#check_email'
   match 'email_error/' => 'users#email_error'
   match 'countdown/' => 'countdown#index'
+  match 'answers/' => 'user_answer#answer'
   root :to => "main_page#index"
 #  resources :quests
   # The priority is based upon order of creation:

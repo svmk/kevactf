@@ -11,6 +11,7 @@ ru:
     news: Новости
     main_page: Главная страница
     countdown: Обратный отсчет
+    answers: Ответы
   news:
     title_new: Заголовок
     title: Новости
@@ -172,4 +173,9 @@ ru:
     your_nickname: "Ваш никнейм:"
     your_password: "Ваш пароль:"
     success_account2: "ваш псевдоним:"
-    sended_email_to: Отправлин пароль на 
+    sended_email_to: Отправлин пароль на
+  answer_controller:
+    answer: "Ответ"
+    quest: "Задание"
+    title: "Ответы"
+    create_time: "Время ответа"

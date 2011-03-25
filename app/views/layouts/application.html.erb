@@ -27,6 +27,7 @@
           <% if @admin then %>
             <li><%= link_to t('main_page.admin'), admin_path, :class=>'menu_item' %></li>
             <li><%= link_to t('main_page.users'), users_path, :class=>'menu_item' %></li>
+            <li><%= link_to t('main_page.answers'), url_for(:controller=>'user_answer',:action=>'answer'), :class=>'menu_item' %></li>
           <% end %>
             <li><%= if not @logged_in then
               link_to t('main_page.login'), auth_path, :class=>'menu_item'

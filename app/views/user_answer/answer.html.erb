@@ -1,0 +1,13 @@
+<h1><%= t('answer_controller.title') %></h1>
+<div class="vv">
+<table class="table_answer">
+  <thead>
+    <tr><td><%= t('auth.username') %></td><td><%= t('answer_controller.answer') %></td><td><%= t('answer_controller.quest');%></td><td><%= t('answer_controller.create_time');%></td></tr>
+  </thead>
+  <tbody>
+    <% @answers.each do | answer | %>
+    <tr><td><%= link_to answer.user.nickname,answer.user %></td><td><%= answer.answer %></td><td><%= link_to answer.quest.quest_type.title + ' | ' + answer.quest.title, answer.quest %></td><td><%= answer.created_at.to_s %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
